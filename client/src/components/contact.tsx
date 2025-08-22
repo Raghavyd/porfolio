@@ -17,8 +17,8 @@ const contacts = [
   {
     id: "github",
     title: "GitHub",
-    value: "@amankumar900651",
-    href: "https://github.com/amankumar900651",
+    value: "@Raghavyd",
+    href: "https://github.com/Raghavyd",
     icon: Github,
     gradient: "from-gray-50 to-slate-50",
     iconBg: "bg-gray-100 group-hover:bg-gray-200",
@@ -27,8 +27,8 @@ const contacts = [
   {
     id: "linkedin",
     title: "LinkedIn",
-    value: "aman-kumar-900651",
-    href: "https://linkedin.com/in/aman-kumar-900651",
+    value: "aman-yadav-218b2a288",
+    href: "https://www.linkedin.com/in/aman-yadav-218b2a288/",
     icon: Linkedin,
     gradient: "from-blue-50 to-indigo-50",
     iconBg: "bg-blue-100 group-hover:bg-blue-200",

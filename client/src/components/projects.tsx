@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Bot, Home } from "lucide-react";
+import { ExternalLink, Bot, Home, Github } from "lucide-react";
 
 const projects = [
   {
@@ -11,6 +11,7 @@ const projects = [
     description: "AI-powered assistant that can answer real-time queries and open desktop apps, built in VS Code with plans to scale to the web.",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=450",
     link: "https://genix-ai-nu.vercel.app/",
+    githubLink: "https://github.com/Raghavyd/GenixAI",
     icon: Bot,
     tags: ["AI", "JavaScript"],
     gradient: "from-blue-500 to-purple-600"
@@ -21,6 +22,7 @@ const projects = [
     description: "Real estate website showcasing properties with a clean frontend built using React and modern UI design.",
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=800&h=450",
     link: "https://estate-aman.vercel.app/",
+    githubLink: "https://github.com/Raghavyd/Estate-Aman",
     icon: Home,
     tags: ["React", "UI/UX"],
     gradient: "from-green-500 to-teal-600"
@@ -82,8 +84,8 @@ export default function Projects() {
                     <p className="text-gray-600 mb-6 leading-relaxed" data-testid={`text-project-description-${project.id}`}>
                       {project.description}
                     </p>
-                    <div className="flex items-center justify-between">
-                      <div className="flex space-x-3">
+                    <div className="space-y-4">
+                      <div className="flex flex-wrap gap-2">
                         {project.tags.map((tag) => (
                           <Badge 
                             key={tag} 
@@ -95,16 +97,28 @@ export default function Projects() {
                           </Badge>
                         ))}
                       </div>
-                      <Button
-                        variant="ghost"
-                        asChild
-                        className="text-blue-600 hover:text-blue-800 font-semibold"
-                        data-testid={`link-project-${project.id}`}
-                      >
-                        <a href={project.link} target="_blank" rel="noopener noreferrer">
-                          View Project <ExternalLink className="ml-2 h-4 w-4" />
-                        </a>
-                      </Button>
+                      <div className="flex gap-3">
+                        <Button
+                          variant="ghost"
+                          asChild
+                          className="text-blue-600 hover:text-blue-800 font-semibold flex-1"
+                          data-testid={`link-project-${project.id}`}
+                        >
+                          <a href={project.link} target="_blank" rel="noopener noreferrer">
+                            View Project <ExternalLink className="ml-2 h-4 w-4" />
+                          </a>
+                        </Button>
+                        <Button
+                          variant="outline"
+                          asChild
+                          className="text-gray-600 hover:text-gray-800 font-semibold"
+                          data-testid={`link-github-${project.id}`}
+                        >
+                          <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                            <Github className="h-4 w-4" />
+                          </a>
+                        </Button>
+                      </div>
                     </div>
                   </CardContent>
                 </Card>
