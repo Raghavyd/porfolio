@@ -123,7 +123,7 @@ export default function Contact() {
                   className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg"
                   data-testid="button-send-message"
                 >
-                  <a href="mailto:amankumar900651@gmail.com">
+                  <a href="mailto:amankumar900651@gmail.com?subject=Portfolio%20Contact&body=Hi%20Aman,%0A%0AI%20found%20your%20portfolio%20and%20would%20like%20to%20get%20in%20touch.%0A%0ABest%20regards">
                     <Send className="mr-2 h-5 w-5" />
                     Send Message
                   </a>
