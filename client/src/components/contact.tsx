@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Mail, Github, Linkedin, Send } from "lucide-react";
+import { Mail, Github, Linkedin, Send, Copy } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const contacts = [
   {
@@ -37,6 +38,27 @@ const contacts = [
 ];
 
 export default function Contact() {
+  const { toast } = useToast();
+
+  const handleEmailClick = async () => {
+    const email = "amankumar900651@gmail.com";
+    
+    // First try opening mail client
+    window.location.href = `mailto:${email}`;
+    
+    // Also copy email to clipboard as backup
+    try {
+      await navigator.clipboard.writeText(email);
+      toast({
+        title: "Email copied!",
+        description: "Email address copied to clipboard as backup",
+      });
+    } catch (err) {
+      // Fallback for older browsers
+      console.log("Could not copy to clipboard");
+    }
+  };
+
   return (
     <section id="contact" className="py-20 px-6 bg-white" data-testid="section-contact">
       <div className="container mx-auto">
@@ -118,14 +140,36 @@ export default function Contact() {
                 <p className="text-blue-100 mb-6" data-testid="text-collaboration-description">
                   Whether you have a project in mind or just want to chat about technology, I'd love to hear from you.
                 </p>
-                <a 
-                  href="mailto:amankumar900651@gmail.com"
-                  className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg"
-                  data-testid="button-send-message"
-                >
-                  <Send className="mr-2 h-5 w-5" />
-                  Send Message
-                </a>
+                <div className="flex gap-3">
+                  <button 
+                    onClick={handleEmailClick}
+                    className="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg flex-1"
+                    data-testid="button-send-message"
+                  >
+                    <Send className="mr-2 h-5 w-5" />
+                    Send Message
+                  </button>
+                  <button 
+                    onClick={async () => {
+                      try {
+                        await navigator.clipboard.writeText("amankumar900651@gmail.com");
+                        toast({
+                          title: "Email copied!",
+                          description: "amankumar900651@gmail.com copied to clipboard",
+                        });
+                      } catch (err) {
+                        toast({
+                          title: "Copy failed",
+                          description: "Email: amankumar900651@gmail.com",
+                        });
+                      }
+                    }}
+                    className="inline-flex items-center px-4 py-4 bg-white text-blue-600 font-semibold rounded-xl hover:bg-gray-100 transform hover:scale-105 transition-all duration-300 shadow-lg"
+                    data-testid="button-copy-email"
+                  >
+                    <Copy className="h-5 w-5" />
+                  </button>
+                </div>
               </CardContent>
             </Card>
           </motion.div>
